@@ -1,4 +1,5 @@
 import React from 'react'
+import { RiDeleteBin7Line } from "react-icons/ri";
 
 const TodoList = ({todo, delTodo}) => {
     function handleDel(id){
@@ -12,7 +13,7 @@ const TodoList = ({todo, delTodo}) => {
                 {todo.map((item) => (
                     <div key={item.id}>
                         {item.title}
-                        <button className="p-2 m-2 bg-cyan-500" onClick={()=>handleDel(item.id)}>Del</button>
+                        <button className="p-2 m-2 bg-cyan-500" onClick={()=>handleDel(item.id)}><RiDeleteBin7Line /></button>
                     </div>
                 ))}
             </div>

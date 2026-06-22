@@ -79,6 +79,44 @@
 
 
 //local storage
+// import { useEffect, useState } from "react";
+// import TodoForm from "./components/TodoForm";
+// import TodoList from "./components/TodoList";
+
+// const App = () => {
+//  const [todo, setTodo] = useState(() => {
+//     const savedTodos = localStorage.getItem('todos');
+//     return savedTodos ? JSON.parse(savedTodos) : [];
+//   });
+
+//   function addTodo(val) {
+//     if (val.trim() === "") {
+//       alert("pls enter input");
+//       return;
+//     }
+
+//     setTodo([...todo, { title: val, id: Date.now() }]);
+//   }
+
+//   useEffect(()=>{
+//     localStorage.setItem('todos', JSON.stringify(todo));
+//   },[todo])
+
+//   return (
+//     <>
+//       <h1 className="text-center mt-10 font-bold text-4xl">Todo App</h1>
+//       <TodoForm addTodo={addTodo}/>
+//       <TodoList todo={todo}/>
+      
+      
+//     </>
+//   );
+// };
+// export default App;
+
+
+//delete
+
 import { useEffect, useState } from "react";
 import TodoForm from "./components/TodoForm";
 import TodoList from "./components/TodoList";
@@ -94,21 +132,25 @@ const App = () => {
       alert("pls enter input");
       return;
     }
-
     setTodo([...todo, { title: val, id: Date.now() }]);
   }
 
+  function delTodo(id){
+    console.log(id)
+    setTodo(todo.filter((item)=>item.id !== id))
+  }
+
+
   useEffect(()=>{
     localStorage.setItem('todos', JSON.stringify(todo));
+    console.log(todo)
   },[todo])
 
   return (
     <>
       <h1 className="text-center mt-10 font-bold text-4xl">Todo App</h1>
       <TodoForm addTodo={addTodo}/>
-      <TodoList todo={todo}/>
-      
-      
+      <TodoList todo={todo} delTodo={delTodo}/>
     </>
   );
 };

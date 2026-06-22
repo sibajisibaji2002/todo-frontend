@@ -17,8 +17,17 @@ const TodoForm = ({ addTodo }) => {
                     className=" p-2 border border-1 border-slate-950 bg-slate-300 me-2"
                     onChange={(e) => {
                         setVal(e.target.value);
-                        console.log(val);
+                        // console.log(e);
+
                     }}
+
+                    onKeyDown={(e) => {
+                        if (e.key === "Enter") {
+                            handleAdd();
+                        }
+                    }}
+
+
                 />
                 <button className="bg-lime-500 p-2 m-2" onClick={handleAdd}>
                     Add
